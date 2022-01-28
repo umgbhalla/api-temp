@@ -1,4 +1,4 @@
-import mysql from 'myql'
+import mysql from 'mysql'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -11,4 +11,4 @@ const pool = mysql.createPool({
   connectionLimit: process.env.DB_CONNECTION_LIMIT,
 })
 
-export defualt pool
+export default pool

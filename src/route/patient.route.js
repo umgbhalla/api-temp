@@ -14,4 +14,6 @@ patientRouts
   .route('/:id')
   .get(getPatient)
   .put(updatePatient)
-  .deletePatient(deletePatient)
+  .delete(deletePatient)
+
+export default patientRouts

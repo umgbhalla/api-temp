@@ -7,4 +7,4 @@ const QUERY = {
     'UPDATE patients SET first_name = ?, last_name = ?, email = ?, address = ?,diagnosis = ?,phone = ?,image_url = ? WHERE id = ?',
   DELETE_PATIENT: 'DELETE FROM patients WHERE id = ?',
 }
-export defualt QUERY
+export default QUERY

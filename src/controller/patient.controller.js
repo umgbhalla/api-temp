@@ -1,5 +1,6 @@
 import database from '../config/mysql.config.js'
-import { Response, HttpStatus } from '../domain/reposnse.js'
+import Response from '../domain/reposnse.js'
+import HttpStatus from '../domain/reposnse.js'
 import logger from '../util/logger.js'
 import QUERY from '../query/patient.query.js'
 
@@ -146,7 +147,7 @@ export const updatePatient = (req, res) => {
   })
 }
 
-export const deletePatients = (req, res) => {
+export const deletePatient = (req, res) => {
   logger.info(`${req.method} ${req.orignalurl}, deleting patients`)
   database.query(QUERY.DELETE_PATIENT, (error, results) => {
     if (results.affectedRows > 0) {
