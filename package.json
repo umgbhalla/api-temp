@@ -1,0 +1,32 @@
+{
+  "name": "api-temp",
+  "version": "0.0.0",
+  "description": "testing a nodejs mysql api",
+  "main": "index.js",
+  "type": "module",
+  "repository": "github.com/umgbhalla/temp-api",
+  "author": "umgbhalla",
+  "scripts": {
+    "start:dev": "NODE_ENV=dev nodemon src/index.js",
+    "start:prod": "NODE_ENV=prod node src/index.js"
+  },
+  "keywords": [
+    "Nodels",
+    "Express",
+    " MySOL " ,
+    "API"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "ip": "^1.1.5",
+    "mysql": "^2.18.1",
+    "pino": "^7.6.4",
+    "pino-pretty": "^7.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
