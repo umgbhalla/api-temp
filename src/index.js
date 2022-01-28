@@ -3,7 +3,7 @@ import express from 'express'
 import ip from 'ip'
 import cors from 'cors'
 import Response from './domain/reposnse.js'
-import HttpStatus from './domain/reposnse.js'
+// import HttpStatus from './domain/reposnse.js'
 import patientRouts from './route/patient.route.js'
 import logger from './util/logger.js'
 dotenv.config()
@@ -12,7 +12,16 @@ const app = express()
 app.use(cors({ origin: '*' })) // not recommended
 // app.use(cors({origin: /* array of allowed urls */ })) //  recommended
 app.use('/patients', patientRouts)
+const HttpStatus = {
+  OK: { code: 200, status: 'OK' },
+  CREATED: { code: 201, status: 'CREATED' },
+  NO_CONTENT: { code: 204, status: 'NO_CONTENT' },
+  BAD_REQUEST: { code: 400, status: 'BAD_REQUEST' },
+  NOT_FOUND: { code: 404, status: 'NOT_FOUND' },
+  INTERNAL_SERVER_ERROR: { code: 500, status: 'INTERNAL_SERVER_ERROR' },
+}
 
+console.log(HttpStatus.OK.code)
 app.get('/', (req, res) =>
   res.send(
     new Response(
