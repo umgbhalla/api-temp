@@ -16,8 +16,33 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: lamoded
       MYSQL_ROOT_PASSWORD: lamoded
-      SERVICE_TAGS: dev
+      SERVICE_TAGS: prod
       SERVICE_NAME: mysqldb
+    networks:
+      - api-dockernet
+
+  nodeapp:
+    container_name: nodeappcontainer
+    build: .
+    image: nodeapp:v0
+    volumes:
+      - $HOME/nodeapp:/node-dir
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+    environment:
+      SERVICE_TAGS: prod
+      SERVICE_NAME: nodeapp-service
+      SERVER_PORT: 3000
+      DB_HOST: mysqldb
+      DB_PORT: 3306
+      DB_USER: admin
+      DB_PASSWORD: 'lamoded'
+      DB_NAME: 'patientsdb'
+      DB_CONNECTION_LIMIT: 20
+    depends_on:
+      - mysqldb
     networks:
       - api-dockernet
 
