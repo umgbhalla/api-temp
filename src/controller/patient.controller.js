@@ -44,7 +44,7 @@ export const getPatients = (req, res) => {
 export const createPatient = (req, res) => {
   logger.info(`${req.method} ${req.originalUrl}, creating patient`)
   database.query(
-    QUERY.CREATE_PATIENT,
+    QUERY.CREATE_PATIENT_PROCEDURE,
     Object.values(req.body),
     (error, results) => {
       if (!results) {
@@ -59,11 +59,12 @@ export const createPatient = (req, res) => {
             )
           )
       } else {
-        const patient = {
-          id: results.insertedId,
-          ...req.body,
-          created_at: new Date(),
-        }
+        // const patient = {
+        //   id: results.insertedId,
+        //   ...req.body,
+        //   created_at: new Date(),
+        // }
+        const patient = results[0][0]
         res
           .status(HttpStatus.CREATED.code)
           .send(
