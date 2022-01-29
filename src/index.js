@@ -6,9 +6,19 @@ import Response from './domain/reposnse.js'
 // import HttpStatus from './domain/reposnse.js'
 import patientRouts from './route/patient.route.js'
 import logger from './util/logger.js'
+import bodyParser from 'body-parser'
 dotenv.config()
 const PORT = process.env.SERVER_PORT || 3000
 const app = express()
+//
+//  // create application/json parser
+// let jsonParser = bodyParser.json()
+//  // create application/x-www-form-urlencoded parser
+// let urlencodedParser = bodyParser.urlencoded({ extended: false })
+//
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(cors({ origin: '*' })) // not recommended
 // app.use(cors({origin: /* array of allowed urls */ })) //  recommended
 app.use('/patients', patientRouts)
